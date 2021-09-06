@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "5eee651f739f8c674fd736ee"
+  },
+  "name": "Margherita",
+  "image": "pizza.png",
+  "price": "250",
+  "size": "small"
+},{
+  "_id": {
+    "$oid": "5eee6671a27a66807cf2bea3"
+  },
+  "name": "Marinara",
+  "image": "piz1.png",
+  "price": "300",
+  "size": "medium"
+},{
+  "_id": {
+    "$oid": "5eee6692a27a66807cf2bea4"
+  },
+  "name": "Americana",
+  "image": "piz2.jpg",
+  "price": "200",
+  "size": "small"
+},{
+  "_id": {
+    "$oid": "5eee66a5a27a66807cf2bea5"
+  },
+  "name": "Burger",
+  "image": "burger.jpg",
+  "price": "80",
+  "size": "medium"
+},{
+  "_id": {
+    "$oid": "5eee66c4a27a66807cf2bea6"
+  },
+  "name": "French Fries",
+  "image": "fries.jpg",
+  "price": "180",
+  "size": "large"
+},{
+  "_id": {
+    "$oid": "5eee66cfa27a66807cf2bea7"
+  },
+  "name": "Chowmein",
+  "image": "chowmein.jpg",
+  "price": "280",
+  "size": "small"
+},{
+  "_id": {
+    "$oid": "5eee66eea27a66807cf2bea8"
+  },
+  "name": "Cutlet",
+  "image": "cutlet.jpg",
+  "price": "160",
+  "size": "large"
+},{ 
+  "_id": {
+    "$oid": "5eee6717a27a66807cf2bea9"
+  },
+  "name": "Dabeli",
+  "image": "dabeli.jpg",
+  "price": "80",
+  "size": "medium"
+},{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea10"
+    },
+    "name": "Dosa",
+    "image": "dosa.jpg",
+    "price": "140",
+    "size": "large"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea11"
+    },
+    "name": "Fried Rice",
+    "image": "friedrice.jpg",
+    "price": "280",
+    "size": "medium"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea12"
+    },
+    "name": "Idli",
+    "image": "idli.jpg",
+    "price": "220",
+    "size": "large"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea13"
+    },
+    "name": "Macroni",
+    "image": "macroni.jpg",
+    "price": "140",
+    "size": "medium"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea14"
+    },
+    "name": "Noodles",
+    "image": "noodles.jpg",
+    "price": "100",
+    "size": "small"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea15"
+    },
+    "name": "Panner Roll",
+    "image": "paneerroll.jpg",
+    "price": "130",
+    "size": "large"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea16"
+    },
+    "name": "Paneer Tikka",
+    "image": "paneertikka.jpg",
+    "price": "200",
+    "size": "medium"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea17"
+    },
+    "name": "Pasta",
+    "image": "pasta.jpg",
+    "price": "160",
+    "size": "large"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea18"
+    },
+    "name": "Pav Bhaji",
+    "image": "pavbhaji.jpg",
+    "price": "170",
+    "size": "large"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea19"
+    },
+    "name": "Sandwitch",
+    "image": "sandwitch.jpg",
+    "price": "50",
+    "size": "small"
+  },{ 
+    "_id": {
+      "$oid": "5eee6717a27a66807cf2bea20"
+    },
+    "name": "Spring Roll",
+    "image": "spring-roll.jpg",
+    "price": "180",
+    "size": "medium"
+  }]

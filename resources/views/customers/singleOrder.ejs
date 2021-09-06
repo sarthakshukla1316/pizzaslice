@@ -1,0 +1,31 @@
+<section class="status">
+    <div class="container mx-auto">
+        <div class="status-box w-full sm:w-11/12 md:w-2/3 mx-auto">
+            <% if(order.status !== 'completed') { %>
+                <div class="flex items-center justify-between mb-12">
+                    <h1 class="text-base sm:text-lg md:text-xl font-bold">Track delivery status</h1>
+                    <h6 class="bg-white py-1 rounded-full px-4 text-green-600 text-xs"><%= order._id %></h6>
+                    <input type="hidden" id="hiddenInput" value="<%= JSON.stringify(order) %>">
+                </div>
+
+                <ul>
+                    <li class="status_line text-base sm:text-lg md:text-xl pb-16" data-status="order_placed"><span>Order Placed</span></li>
+                    <li class="status_line text-base sm:text-lg md:text-xl pb-16" data-status="confirmed"><span>Order Confirmation</span></li>
+                    <li class="status_line text-base sm:text-lg md:text-xl pb-16" data-status="prepared"><span>Preparation</span></li>
+                    <li class="status_line text-base sm:text-lg md:text-xl pb-16" data-status="delivered"><span>Out for Delivery</span></li>
+                    <li class="status_line text-base sm:text-lg md:text-xl" data-status="completed"><span>Complete</span></li>
+                </ul>
+            <% } else { %>
+                <div class="text-center">
+                    <!-- <img class="w-1/2 mx-auto" src="https://bsscommerce.com/blog/wp-content/uploads/2020/08/order-suceess-02.jpg" alt=""> -->
+                    <img class="w-full sm:w-11/12 md:w-4/5 mx-auto" src="https://codecanyon.img.customer.envatousercontent.com/files/235089424/Image_from_Skype.png?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=550406dc939a6b586eb20a3ba64e138f" alt="">
+                    <h3 class="text-xl font-bold mt-12 text-green-600">
+                        Your order has been received successfully. Hope you enjoyed the food ! 
+                    </h3>
+                    <p class="text-gray-500 text-sm mt-4">Thanks for your purchase. Please give feedback on it.</p>
+                    <a class="inline-block px-6 py-2 rounded-full btn-primary text-white font-bold mt-12" href="#">Give Feedback</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</section>
