@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Order = require('../../../models/order')
 const User = require('../../../models/user')
 const moment = require('moment');
@@ -42,8 +43,8 @@ function orderController() {
             })
             
             let params = {
-            'sender': 'SEDEMO',
-            'apikey': '6ojfpx3g160a1vv2279dtl3m42x9qekd',
+            'sender': process.env.SPRINGEDGE_SENDER,
+            'apikey': process.env.SPRINGEDGE_SECRET_KEY,
             'to': [
                 `91${phone}`  //Mobile Numbers 
             ],

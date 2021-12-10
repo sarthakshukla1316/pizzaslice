@@ -1,3 +1,4 @@
+require('dotenv').config();
 const User = require('../../models/user')
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -117,8 +118,8 @@ function authController() {
             const otp = Math.floor(Math.random() * 1000000) + 10000;
  
             let params = {
-            'sender': 'SEDEMO',
-            'apikey': '6ojfpx3g160a1vv2279dtl3m42x9qekd',
+            'sender': process.env.SPRINGEDGE_SENDER,
+            'apikey': process.env.SPRINGEDGE_SECRET_KEY,
             'to': [
                 `91${phone}`  //Mobile Numbers 
             ],
