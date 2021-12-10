@@ -2,7 +2,7 @@
   "name": "realtime-food-ordering",
   "version": "1.0.0",
   "description": "This is a realtime food ordering website",
-  "main": "index.js",
+  "main": "server.js",
   "author": "Sarthak Shukla",
   "scripts": {
     "start": "node server.js",
