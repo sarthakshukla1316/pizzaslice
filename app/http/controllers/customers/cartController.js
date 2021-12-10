@@ -39,16 +39,28 @@ function cartController() {
             return res.json({ totalQty: req.session.cart.totalQty});
         },
 
+        emptyFullCart(req, res) {
+            if(req.session.cart) {
+                delete req.session.cart;
+                return res.redirect('/cart');
+            } else {
+                return;
+            }
+        }
 
         // delete(req, res) {
-
         //     let cart = req.session.cart;
-
-        //     cart.items[req.body._id].qty = cart.items[req.body._id] - 1;
-        //     if(cart.items[req.body._id].qty == 0) {
-        //         cart.items[req.body._id].remove();
+        //     let id = req.body.foodId;
+        //     if(cart.items[id]) {
+        //         cart.items[id].qty = cart.items[id].qty - 1;
+        //         cart.totalQty = cart.totalQty - 1;
+        //         cart.totalPrice = cart.totalPrice - cart.items[id].item.price;
+        //         if(cart.items[id].qty === 0) {
+        //             delete cart.items.id;
+        //         }
         //     }
-        //     cart.totalQty = cart.totalQty - 1;
+
+        //     return res.json({ success: 'Item deleted successfully'});
         // }
     }
 }

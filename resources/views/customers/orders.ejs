@@ -19,6 +19,8 @@
                     <th class="px-4 py-2 text-left">Phone</th>
                     <th class="px-4 py-2 text-left">Address</th>
                     <th class="px-4 py-2 text-left">Time</th>
+                    <th class="px-4 py-2 text-left">Price</th>
+                    <th class="px-4 py-2 text-left">Payment Mode</th>
                 </tr>
             </thead>
 
@@ -29,8 +31,18 @@
                             <td class="border px-4 py-2">
                                 <% if(order.status !== 'completed') { %>
                                     <a href="/customer/orders/<%=order._id%>" class="link"><%= order._id %></a>
+                                    <div>
+                                        <% for(let menuItem of Object.values(order.items)) { %>
+                                            <p class="text-red-600"><%= menuItem.item.name %> - <%= menuItem.qty %></p>
+                                        <% } %>
+                                    </div>
                                 <% } else { %>
                                     <a href="/customer/orders/<%=order._id%>" class="text-green-600"><%= order._id %></a>
+                                    <div>
+                                        <% for(let menuItem of Object.values(order.items)) { %>
+                                            <p class="text-green-600"><%= menuItem.item.name %> - <%= menuItem.qty %></p>
+                                        <% } %>
+                                    </div>
                                 <% } %>
                             </td>
 
@@ -53,6 +65,21 @@
                                     <%= moment(order.createdAt).format('hh:mm A') %>
                                 <% } else { %>
                                     <p class="text-green-600"><%= moment(order.createdAt).format('hh:mm A') %></p>
+                                <% } %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <% if(order.status !== 'completed') { %>
+                                    ₹ <%= order.price %>
+                                <% } else { %>
+                                    <p class="text-green-600">₹ <%= order.price %></p>
+                                <% } %>
+                            </td>
+                            <td class="border px-4 py-2">
+                                
+                                <% if(order.status !== 'completed') { %>
+                                    <%= order.paymentType %> - <%= order.paymentStatus ? 'paid' : 'not paid' %> %>
+                                <% } else { %>
+                                    <p class="text-green-600"><%= order.paymentType %> - paid </p>
                                 <% } %>
                             </td>
                         </tr>

@@ -282,18 +282,18 @@ body {
 }
 
 nav li:last-child a {
-  background: #FE5F1E;
+  background: #539e50;
 }
 
 nav li a {
   transition: all 0.3s ease-in-out;
 }
 nav li a:hover {
-  color: #FE5F1E;
+  color: #539e50;
 }
 
 nav li:last-child a:hover {
-  background: #b23301;
+  background: #59b256;
 }
 
 section.hero {
@@ -301,11 +301,11 @@ section.hero {
 }
 
 .btn-primary {
-  background: #FE5F1E;
+  background: #539e50;
   transition: all 0.3s ease-in-out;
 }
 .btn-primary:hover {
-  background: #b23301;
+  background: #59b256;
 }
 
 .size {
@@ -313,12 +313,12 @@ section.hero {
 }
 
 .add-to-cart {
-  border: 2px solid #FE5F1E;
-  color: #FE5F1E;
+  border: 2px solid #539e50;
+  color: #539e50;
   transition: all 0.3s ease-in-out;
 }
 .add-to-cart:hover {
-  background: #FE5F1E;
+  background: #539e50;
   border-color: #fff;
   color: #fff;
 }
@@ -330,7 +330,7 @@ section.cart {
   background: #F8F8F8;
 }
 section.cart .amount {
-  color: #FE5F1E;
+  color: #539e50;
 }
 
 section.login {
@@ -338,13 +338,19 @@ section.login {
   min-height: calc(100vh - 86px);
 }
 section.login a {
-  color: #FE5F1E;
+  color: #539e50;
 }
 section.login a:hover {
-  color: #b23301;
+  color: #59b256;
 }
 
 #togglePassword {
+  position: absolute;
+  top: 11px;
+  left: 227px;
+}
+
+#togglePassword1 {
   position: absolute;
   top: 11px;
   left: 227px;
@@ -356,7 +362,7 @@ section.login a:hover {
 }
 
 a.link {
-  color: #FE5F1E;
+  color: #539e50;
 }
 
 section.status {
@@ -453,11 +459,11 @@ section.status {
 }
 
 .status-box ul li.current span {
-  color: #FE5F1E;
+  color: #539e50;
 }
 
 .status-box ul li.current span:after {
-  background: #FE5F1E;
+  background: #539e50;
 }
 
 .status-box ul li small {
@@ -481,4 +487,28 @@ section.status {
   .status-box ul li span:before {
     font-size: 34px;
   }
+}
+.StripeElement {
+  box-sizing: border-box;
+  width: 50%;
+  margin-left: auto;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }

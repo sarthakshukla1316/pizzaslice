@@ -4,13 +4,16 @@
           <% if(messages.error) { %>
             <span class="text-red-500 text-sm"><%= messages.error %></span>
           <% } %>
+          <% if(messages.success) { %>
+            <p style="color: #59b256;"><%= messages.success %></p>
+          <% } %>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
               Email
             </label>
             <input
               name="email" 
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" placeholder="Enter your email">
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email">
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -30,13 +33,32 @@
             >
               Sign In
             </button>
-            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/register">
+            <!-- <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/register">
               Don't have account?
+            </a> -->
+            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/sendOtp">
+              Verify email
             </a>
+            
           </div>
+          
         </form>
         <p class="text-center text-gray-500 text-xs">
           &copy;2021 Sarthak Shukla. All rights reserved.
         </p>
       </div>
 </section>
+
+
+<script>
+  let password = document.getElementById('password');
+  let togglePassword = document.getElementById('togglePassword');
+
+  togglePassword.addEventListener('click', (e) => {
+    let type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    togglePassword.classList.toggle('fa-eye-slash');
+})
+
+</script>

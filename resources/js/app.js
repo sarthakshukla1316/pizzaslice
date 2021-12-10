@@ -2,6 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import Noty from 'noty';
 import { initAdmin } from './admin';
+import { initStripe } from './stripe';
 
 
 let addToCart = document.querySelectorAll('.add-to-cart');
@@ -39,8 +40,46 @@ addToCart.forEach((btn) => {
 })
 
 
-// function deleteCart(food) {
-//     axios.post('/delete-cart', food).then(res => {
+
+
+// admin section 
+// delete food
+
+// let deleteFood = document.querySelectorAll('.delete-food');
+
+// function deleteFood(food) {
+//     axios.post('/delete-food', food).then(res => {
+//         new Noty({
+//             type: 'success',
+//             timeout: 1000,
+//             text: 'Item deleted from Menu',
+//             progressBar: false
+//         }).show();
+//     }).catch(err => {
+//         new Noty({
+//             type: 'error',
+//             timeout: 1000,
+//             text: 'Something went wrong',
+//             progressBar: false
+//         }).show();
+//     })
+// }
+
+// deleteFood.forEach((btn) => {
+//     btn.addEventListener('click', (e) => {
+//         let food = JSON.parse(btn.dataset.food);
+
+//         deleteFood(food);
+//     })
+// })
+
+
+
+
+
+
+// function deleteCart(foodId) {
+//     axios.post('/delete-cart', foodId).then(res => {
 //         // console.log(res);
 
 //         new Noty({
@@ -59,29 +98,15 @@ addToCart.forEach((btn) => {
 //     })
 // }
 
-
-
-
 // deleteFromCart.forEach((btn) => {
 //     btn.addEventListener('click', (e) => {
 
-//         let food = JSON.parse(btn.dataset.food);
-//         // console.log(food);
-//         deleteCart(food);
+//         let foodId = btn.dataset.id;
+//         deleteCart(foodId);
 //     })
 // })
 
 
-
-let password = document.getElementById('password');
-let togglePassword = document.getElementById('togglePassword');
-
-togglePassword.addEventListener('click', (e) => {
-    let type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
-
-    togglePassword.classList.toggle('fa-eye-slash');
-})
 
 
 
@@ -132,6 +157,12 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
+
+
+
+// Payment section
+initStripe();
+
 
 
 

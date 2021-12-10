@@ -1,0 +1,86 @@
+<div style="display: flex;justify-content: space-around;">
+    <h1 class="text-xl font-bold mt-8 text-center mb-8" id="foodHere">All Foods</h1>
+    <!-- <button  class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" type="submit">
+        Add new
+    </button> -->
+    <a class="mt-8 inline-block align-baseline font-bold text-lg text-blue-500 hover:text-blue-800" href="/admin/add-food">
+        Add new Food
+    </a>
+</div>
+
+<table class="w-full table-auto bg-white">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 text-left">food</th>
+            <th class="px-4 py-2 text-left">Name</th>
+            <th class="px-4 py-2 text-left">Price</th>
+            <th class="px-4 py-2 text-left">Size</th>
+            <th class="px-4 py-2 text-left">Stock</th>
+            <th class="px-4 py-2 text-left">Edit</th>
+            <th class="px-4 py-2 text-left">Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <% foods.forEach(function(food) { %>
+                <tr>
+                    <td class="border px-4 py-2">
+                        <a href="#" class="text-green-600"><%= food._id %></a>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= food.name %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= food.price %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= food.size %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= food.stock %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/admin/update-food/?name=<%= food.name %>&price=<%= food.price %>&size=<%= food.size %>&stock=<%= food.stock %>" class="px-4 py-2" style="color: rgb(19, 170, 77); outline: none;">Edit</a>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/admin/delete-food/?name=<%= food.name %>" class="px-4 py-2" style="color: rgb(170, 19, 19); outline: none;">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+    </tbody>
+</table>
+
+<script>
+    import Noty from 'noty';
+    let deleteFood = document.querySelectorAll('.delete-food');
+
+    function deleteFood(food) {
+        axios.post('/admin/delete-food', food).then(res => {
+            new Noty({
+                type: 'success',
+                timeout: 1000,
+                text: 'Item deleted from Menu',
+                progressBar: false
+            }).show();
+        }).catch(err => {
+            new Noty({
+                type: 'error',
+                timeout: 1000,
+                text: 'Something went wrong',
+                progressBar: false
+            }).show();
+        })
+    }
+
+    deleteFood.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            let food = JSON.parse(btn.dataset.food);
+
+            deleteFood(food);
+        })
+    })
+</script>

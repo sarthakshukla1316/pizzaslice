@@ -12,6 +12,10 @@ function init(passport) {
             return done(null, false, { message: 'No user found with this email' })
         }
 
+        if(user.isVerified !== true) {
+            return done(null, false, { message: 'Email is not Verified' })
+        }
+
         bcrypt.compare(password, user.password).then(match => {
             if(match) {
                 return done(null, user, { message: 'Signed in successfully' });

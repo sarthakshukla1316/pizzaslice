@@ -1,10 +1,10 @@
-const Order = require('../../../models/order')
+const Order = require('../../../models/order');
 
 
 function statusController() {
     return {
         update(req, res) {
-            Order.updateOne({ _id: req.body.orderId }, { status: req.body.status }, (err, data) => {
+            Order.updateOne({ _id: req.body.orderId }, { status: req.body.status }, async (err, data) => {
                 if(err) {
                     req.flash('error', 'Not able to update order Status');
                     return res.redirect('/admin/orders');
