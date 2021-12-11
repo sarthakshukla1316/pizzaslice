@@ -42,7 +42,7 @@ export function initAdmin(socket) {
                     <p>${ order._id }</p>
                     <div>${ renderItems(order.items) }</div>
                 </td>
-                <td class="border px-4 py-2">${ order.customerId.name }</td>
+                <td class="border px-4 py-2">${ order.customerId ? order.customerId.name : 'Deleted' }</td>
                 <td class="border px-4 py-2">${ order.phone }</td>
                 <td class="border px-4 py-2">${ order.address } - Rs ${order.price}</td>
                 <td class="border px-4 py-2">
@@ -81,6 +81,9 @@ export function initAdmin(socket) {
                 </td>
                 <td class="border px-4 py-2">
                     ${ order.paymentStatus ? 'paid' : 'not paid' }
+                </td>
+                <td class="border px-4 py-2">
+                    <a href="/admin/delete-order/?order_id=${order._id}" class="px-4 py-2" style="color: rgb(170, 19, 19); outline: none;">Delete</a>
                 </td>
             </tr>
         `

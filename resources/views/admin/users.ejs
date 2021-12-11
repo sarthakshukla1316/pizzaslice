@@ -1,0 +1,56 @@
+<div>
+    <h1 class="text-xl font-bold mt-8 text-center mb-8" id="foodHere">All Users</h1>
+</div>
+
+<table class="w-full table-auto bg-white">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 text-left">User</th>
+            <th class="px-4 py-2 text-left">Name</th>
+            <th class="px-4 py-2 text-left">Email</th>
+            <th class="px-4 py-2 text-left">Phone</th>
+            <th class="px-4 py-2 text-left">Otp</th>
+            <th class="px-4 py-2 text-left">IsVerified</th>
+            <th class="px-4 py-2 text-left">ForgotOtp</th>
+            <th class="px-4 py-2 text-left">role</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <% users.forEach(function(user) { %>
+                <tr>
+                    <td class="border px-4 py-2">
+                        <a href="#" class="text-green-600"><%= user._id %></a>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.name %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.email %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.phone %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.otp %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.isVerified %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.forgotOtp %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= user.role %>
+                    </td>
+                </tr>
+            <% }) %>
+    </tbody>
+</table>

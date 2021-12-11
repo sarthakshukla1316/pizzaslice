@@ -41,43 +41,6 @@ addToCart.forEach((btn) => {
 
 
 
-
-// admin section 
-// delete food
-
-// let deleteFood = document.querySelectorAll('.delete-food');
-
-// function deleteFood(food) {
-//     axios.post('/delete-food', food).then(res => {
-//         new Noty({
-//             type: 'success',
-//             timeout: 1000,
-//             text: 'Item deleted from Menu',
-//             progressBar: false
-//         }).show();
-//     }).catch(err => {
-//         new Noty({
-//             type: 'error',
-//             timeout: 1000,
-//             text: 'Something went wrong',
-//             progressBar: false
-//         }).show();
-//     })
-// }
-
-// deleteFood.forEach((btn) => {
-//     btn.addEventListener('click', (e) => {
-//         let food = JSON.parse(btn.dataset.food);
-
-//         deleteFood(food);
-//     })
-// })
-
-
-
-
-
-
 // function deleteCart(foodId) {
 //     axios.post('/delete-cart', foodId).then(res => {
 //         // console.log(res);

@@ -1,0 +1,84 @@
+<section class="login flex justify-center pt-4">
+    <div class="w-full max-w-lg">
+        <span class="text-red-500 text-md mb-2">Note: Email and phone number cannot be changed.</span>
+        <% if(messages.error) { %>
+            <span class="text-red-500 text-sm"><%= messages.error %></span>
+          <% } %>
+          <% if(messages.success) { %>
+            <p style="color: #59b256;"><%= messages.success %></p>
+          <% } %>
+        <form action="/profile/update" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <% if(user.image) { %>
+                <img class="h-40 mb-4 mx-auto rounded" style="border-radius: 50%;" src="/img/<%= user.image %>" alt="" />
+            <% } else { %>
+                <img class="h-40 mb-4 mx-auto rounded" style="border-radius: 50%;" src="/img/defaultpropic.png" alt="" />
+            <% } %>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                  Profile photo
+                </label>
+                <input
+                  name="image"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="file" placeholder="Profile photo">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input
+                    name="name" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" value='<%= user.name %>' type="text" placeholder="Name">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="newName">
+                    New Name
+                </label>
+                <input
+                    name="newName" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="newName" value='<%= user.name %>' type="text" placeholder="New Name">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    Email
+                </label>
+                <input
+                name="email" 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" value='<%= user.email %>' type="email" placeholder="Email">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                    Phone number
+                </label>
+                <input
+                name="phone" 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" value='<%= user.phone %>' type="text" placeholder="Phone number">
+            </div>
+            
+            <div style="text-align: center;">
+                <button 
+                    class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                    type="submit" style="width: 50%;"
+                >
+                    Update Profile
+                </button>
+                
+            </div>
+            
+        </form>
+        <form id="delete" action="/delete-account" method="POST" style="text-align: center;">
+            <button
+                class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" 
+                style="background: rgb(196, 49, 49);width: 50%;" onclick="document.getElementById('delete').submit()"
+                href="#"
+            >
+                Delete Account
+            </button>
+        </form>
+        <p class="text-center text-gray-500 text-xs">
+          &copy;2021 Sarthak Shukla. All rights reserved.
+        </p>
+      </div>
+</section>

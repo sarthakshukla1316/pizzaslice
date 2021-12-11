@@ -24,7 +24,14 @@
         </div>
         <div>
             <ul class="flex items-center">
-                <li class="ml-6 text-sm md:text-base"><a href="/">Menu</a></li>
+                <!-- <li class="ml-6 text-sm md:text-base"><a href="/">Menu</a></li> -->
+                <% if(user) { %>
+                    <% if( user.role === 'admin' ) { %>
+                        <li class="ml-6 text-sm md:text-base"><a href="/admin/users">View Users</a></li>
+                    <% } else { %>
+                        <li class="ml-6 text-sm md:text-base"><a href="/">Menu</a></li>
+                    <% } %>
+                <% } %>
 
                 <% if(user) { %>
                     <% if( user.role === 'admin' ) { %>
@@ -39,7 +46,7 @@
                     <% if(user.role === 'admin') { %>
                         <li class="ml-6 text-sm md:text-base text-green-600 font-bold"><a href="/admin/successfulOrders">Sucessful Orders</a></li>
                     <% } else { %>
-                        <li class="ml-6 text-green-600 font-bold"><a href="#"><%= user.name %></a></li>
+                        <li class="ml-6 text-green-600 font-bold"><a href="/profile/<%= user.email %>"><%= user.name %></a></li>
                     <% } %>
 
                     <li class="ml-6">
