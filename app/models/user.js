@@ -8,6 +8,8 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     otp: { type: String, required: true},
     isVerified: { type: Boolean, required: false },
+    forgotOtp: { type: String, required: false},
+    image: { type: String, required: false},
     role: { type: String, default: 'customer' }
 }, 
 { timestamps: true }

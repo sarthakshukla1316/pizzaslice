@@ -58,8 +58,19 @@ function foodController() {
             let food = await Menu.findOne({ name: req.body.name})
             await food.delete();
 
-                return res.redirect('/admin/menuItems');
-            // });
+            return res.redirect('/admin/menuItems');
+            
+        },
+
+        async deleteOrder(req, res) {
+            return res.render('admin/deleteOrder', {order_id: req.query.order_id});
+        },
+
+        async postDeleteOrder(req, res) {
+            let order = await Order.findOne({ _id: req.body.order_id })
+            await order.delete();
+
+            return res.redirect('/admin/orders');
         }
     }
 }
