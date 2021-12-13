@@ -63,6 +63,9 @@
                 </div>
 
                 <% if(user) { %>
+                    <% if(messages.error1) { %>
+                        <span class="text-red-500 text-sm"><%= messages.error1 %></span>
+                    <% } %>
                     <div>
                         <p style="color: #59b256;padding-top: 28px;">Enter phone number to receive Order status notification.</p>
                         <form action="/order-verify" method="POST" class="mt-3" id="payment-form">

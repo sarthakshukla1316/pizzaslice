@@ -89,14 +89,18 @@ function orderController() {
             }
 
             let order = await Order.findById(order_id);
+
+            if(!order) {
+                return res.status(500).json({ message: 'Invalid Order' });
+            }
             
             if(order.otp !== otp) {
-                await order.delete();
+                // await order.delete();
                 req.flash('error1', 'Invalid otp');
                 req.flash('order_id', order_id);
                 req.flash('phone', phone);
                 req.flash('address', address);
-                return res.redirect('/checkout');
+                return res.status(500).json({ message: 'Invalid otp' });
             }
 
 

@@ -77,6 +77,9 @@
         <% if(messages.error1) { %>
           <span class="text-red-500 text-sm"><%= messages.error1 %></span>
         <% } %>
+        <% if(messages.desc) { %>
+          <span class="text-red-500 text-sm"><%= messages.desc %></span>
+        <% } %>
         <% if(messages.success1) { %>
           <p style="color: #59b256;"><%= messages.success1 %></p>
         <% } %>
