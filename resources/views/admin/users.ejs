@@ -13,6 +13,7 @@
             <th class="px-4 py-2 text-left">IsVerified</th>
             <th class="px-4 py-2 text-left">ForgotOtp</th>
             <th class="px-4 py-2 text-left">role</th>
+            <th class="px-4 py-2 text-left">Delete</th>
         </tr>
     </thead>
 
@@ -49,6 +50,12 @@
 
                     <td class="border px-4 py-2">
                         <%= user.role %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <form action="/admin/delete-user/<%= user.email %>" method="POST">
+                            <button type="submit" class="deleteBtn px-4 py-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </form>
                     </td>
                 </tr>
             <% }) %>

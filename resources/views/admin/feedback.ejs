@@ -13,6 +13,7 @@
             <th class="px-4 py-2 text-left">Speed</th>
             <th class="px-4 py-2 text-left">Overall Experience</th>
             <th class="px-4 py-2 text-left">Comment</th>
+            <th class="px-4 py-2 text-left">Delete</th>
         </tr>
     </thead>
 
@@ -46,7 +47,18 @@
                     <td class="border px-4 py-2">
                         <%= feedback.comment %>
                     </td>
+                    <td class="border px-4 py-2">
+                        <form action="/admin/delete-feedback/<%= feedback.order_id %>" method="POST">
+                            <button type="submit" class="deleteBtn px-4 py-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </form>
+                    </td>
                 </tr>
             <% }) %>
     </tbody>
 </table>
+
+<script>
+    function deleteFeedback() {
+        
+    }
+</script>

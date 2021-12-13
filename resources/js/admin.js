@@ -83,7 +83,9 @@ export function initAdmin(socket) {
                     ${ order.paymentStatus ? 'paid' : 'not paid' }
                 </td>
                 <td class="border px-4 py-2">
-                    <a href="/admin/delete-order/?order_id=${order._id}" class="px-4 py-2" style="color: rgb(170, 19, 19); outline: none;">Delete</a>
+                    <form action="/admin/delete-order/${order._id}" method="POST">
+                        <button type="submit" class="px-4 py-2" style="color: rgb(170, 19, 19); outline: none;">Delete</button>
+                    </form>
                 </td>
             </tr>
         `

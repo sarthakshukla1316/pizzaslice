@@ -11,9 +11,21 @@ function userController() {
             
         },
 
+        async deleteUser(req, res) {
+            let user = await User.findOne({ email: req.params.email });
+            await user.delete();
+            return res.redirect('/admin/users');
+        },
+
         async getFeedback(req, res) {
             const feedbacks = await Feedback.find();
             res.render('admin/feedback', { feedbacks: feedbacks});
+        },
+
+        async deleteFeedback(req, res) {
+            let feedback = await Feedback.findOne({ order_id: req.params.order_id });
+            await feedback.delete();
+            return res.redirect('/admin/feedback');
         }
     }
 }

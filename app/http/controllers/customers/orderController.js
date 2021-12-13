@@ -136,7 +136,7 @@ function orderController() {
                     mailSender(toEmailAdmin, markupAdmin, subjectAdmin);
                 }
 
-                console.log(sendEmail);
+                // console.log(sendEmail);
                 
                 
                 Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {

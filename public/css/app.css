@@ -532,6 +532,24 @@ section.status {
   display: none;
 }
 
+.editBtn {
+  color: #13aa4d;
+  outline: none;
+}
+
+.editBtn:hover {
+  color: #58eb90;
+}
+
+.deleteBtn {
+  color: #d44242;
+  outline: none;
+}
+
+.deleteBtn:hover {
+  color: #e97171;
+}
+
 .horizon {
   display: flex;
 }

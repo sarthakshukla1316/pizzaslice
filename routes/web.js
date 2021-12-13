@@ -94,7 +94,6 @@ function initRoutes(app) {
 
     app.get('/admin/orders', admin, adminOrderController().index);           //    Admin routes
     app.post('/admin/order/status', admin, statusController().update);
-    // app.post('/admin/food/changeStock', admin, statusController().update);
 
     app.get('/admin/successfulOrders', admin, successfulOrderController().index);
 
@@ -108,11 +107,12 @@ function initRoutes(app) {
     app.get('/admin/update-food', admin, foodController().updateFood);
     app.post('/admin/update-food', admin, upload, foodController().postUpdateFood);
 
-    app.get('/admin/delete-food', admin, foodController().delete);
-    app.post('/admin/delete-food', admin, foodController().postDelete);
+    app.post('/admin/delete-food/:name', admin, foodController().postDelete);
     
-    app.get('/admin/delete-order', admin, foodController().deleteOrder);
-    app.post('/admin/delete-order', admin, foodController().postDeleteOrder);
+    app.post('/admin/delete-order/:order_id', admin, foodController().postDeleteOrder);
+
+    app.post('/admin/delete-feedback/:order_id', admin, userController().deleteFeedback);
+    app.post('/admin/delete-user/:email', admin, userController().deleteUser);
 
     
 }

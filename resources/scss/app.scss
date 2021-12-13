@@ -282,6 +282,24 @@ section.status {
     display: none;
 }
 
+.editBtn {
+    color: rgb(19, 170, 77); 
+    outline: none;
+}
+
+.editBtn:hover {
+    color: rgb(88, 235, 144);
+}
+
+.deleteBtn {
+    color: rgb(212, 66, 66);
+    outline: none;
+}
+
+.deleteBtn:hover {
+    color: rgb(233, 113, 113);
+}
+
 
 
 .horizon {
