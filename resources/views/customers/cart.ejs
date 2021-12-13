@@ -67,9 +67,9 @@
                         <p style="color: #59b256;padding-top: 28px;">Enter phone number to receive Order status notification.</p>
                         <form action="/order-verify" method="POST" class="mt-3" id="payment-form">
                             
-                            <input name="phone" type="text" class="border border-gray-400 p-2 w-1/2 mb-4" placeholder="Phone number">
+                            <input name="phone" type="text" required class="border border-gray-400 p-2 w-1/2 mb-4" placeholder="Phone number">
                             <div class="mt-4">
-                                <button type="submit" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-4">Proceed to checkout</button>
+                                <button type="submit" style="outline: none;" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-4">Proceed to checkout</button>
                             </div>
                         </form>
                     </div>

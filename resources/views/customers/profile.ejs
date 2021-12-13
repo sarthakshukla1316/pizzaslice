@@ -26,7 +26,7 @@
                     Name
                 </label>
                 <input
-                    name="name" 
+                    name="name" required
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" value='<%= user.name %>' type="text" placeholder="Name">
             </div>
 
@@ -35,7 +35,7 @@
                     New Name
                 </label>
                 <input
-                    name="newName" 
+                    name="newName" required
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="newName" value='<%= user.name %>' type="text" placeholder="New Name">
             </div>
 
@@ -44,7 +44,7 @@
                     Email
                 </label>
                 <input
-                name="email" 
+                name="email" required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" value='<%= user.email %>' type="email" placeholder="Email">
             </div>
 
@@ -53,7 +53,7 @@
                     Phone number
                 </label>
                 <input
-                name="phone" 
+                name="phone" required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" value='<%= user.phone %>' type="text" placeholder="Phone number">
             </div>
             
@@ -77,8 +77,8 @@
                 Delete Account
             </button>
         </form>
-        <p class="text-center text-gray-500 text-xs">
-          &copy;2021 Sarthak Shukla. All rights reserved.
+        <p class="text-center text-gray-500 text-md" style="margin-bottom: 20px;">
+          &copy;2021 <a href="https://sarthakshukla.netlify.app" target="_blank">Sarthak Shukla</a>. All rights reserved.
         </p>
       </div>
 </section>

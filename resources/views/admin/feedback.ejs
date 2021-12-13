@@ -1,0 +1,52 @@
+<div style="display: flex;justify-content: space-around;">
+    <h1 class="text-xl font-bold mt-8 text-center mb-8" id="foodHere">Customer feedbacks</h1>
+</div>
+
+<table class="w-full table-auto bg-white">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 text-left">Order Id</th>
+            <th class="px-4 py-2 text-left">Email</th>
+            <th class="px-4 py-2 text-left">Phone</th>
+            <th class="px-4 py-2 text-left">Food Quality</th>
+            <th class="px-4 py-2 text-left">Cleanliness</th>
+            <th class="px-4 py-2 text-left">Speed</th>
+            <th class="px-4 py-2 text-left">Overall Experience</th>
+            <th class="px-4 py-2 text-left">Comment</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <% feedbacks.forEach(function(feedback) { %>
+                <tr>
+                    <td class="border px-4 py-2">
+                        <%= feedback.order_id %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= feedback.email %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= feedback.phone %>
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        <%= feedback.quality %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <%= feedback.clean %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <%= feedback.speed %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <%= feedback.overall %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <%= feedback.comment %>
+                    </td>
+                </tr>
+            <% }) %>
+    </tbody>
+</table>

@@ -2192,7 +2192,8 @@ function placeOrder(formObject) {
       progressBar: false
     }).show();
     setTimeout(function () {
-      window.location.href = '/customer/orders';
+      // window.location.href = '/customer/orders';
+      window.location.href = "/customer/feedback/".concat(res.data.order_id);
     }, 1000);
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({

@@ -1,3 +1,75 @@
+<style>
+  /* The container2 */
+  .container2 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.7;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container2:hover input ~ .checkmark2 {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container2 input:checked ~ .checkmark2 {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark2/indicator (hidden when not checked) */
+  .checkmark2:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark2 when checked */
+  .container2 input:checked ~ .checkmark2:after {
+    display: block;
+  }
+  
+  /* Style the checkmark2/indicator */
+  .container2 .checkmark2:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  </style>
+
 <section class="login flex justify-center pt-12">
   <div class="w-full max-w-xl">
 
@@ -19,24 +91,29 @@
           </div>
         </div>
 
-        <input name="order_id" value="<%= messages.order_id && messages.order_id %>" type="text" class="border border-gray-400 p-2 mb-4 w-full"   placeholder="Order Id">
+        <input name="order_id" value="<%= messages.order_id && messages.order_id %>" type="text" required class="border border-gray-400 p-2 mb-4 w-full" placeholder="Order Id">
 
-        <input name="phone" value="<%= messages.phone && messages.phone %>" type="text" class="border border-gray-400 p-2 mb-4 w-full"      placeholder="Phone number">
+        <input name="phone" value="<%= messages.phone && messages.phone %>" type="text" required class="border border-gray-400 p-2 mb-4 w-full"      placeholder="Phone number">
 
-        <input name="address" type="text" class="border border-gray-400 p-2 mb-4 w-full" placeholder="Address">
+        <input name="address" type="text" class="border border-gray-400 p-2 mb-4 w-full" required placeholder="Address">
 
-        <input name="otp" type="text" class="border border-gray-400 p-2 w-full" placeholder="otp">
+        <input name="otp" type="text" class="border border-gray-400 p-2 w-full" required placeholder="otp">
+
+        <label class="container2">Want to receive email on placing Order
+          <input type="checkbox" name="sendEmail" value="yes">
+          <span class="checkmark2"></span>
+        </label>
 
         <div class="mt-4">
             <div class="w-full" id="card-element"></div>
-            <button type="submit" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order Now</button>
+            <button type="submit" style="outline: none;" class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6">Order Now</button>
         </div>
 
       </form>
 
 
-      <p class="text-center text-gray-500 text-xs">
-        &copy;2021 Sarthak Shukla. All rights reserved.
+      <p class="text-center text-gray-500 text-md" style="margin-bottom: 20px;">
+        &copy;2021 <a href="https://sarthakshukla.netlify.app" target="_blank">Sarthak Shukla</a>. All rights reserved.
       </p>
     </div>
 </section>

@@ -39,6 +39,19 @@
 <section class="menu container mx-auto py-8">
   <h1 class="text-xl font-bold mb-8" id="foodHere">All Foods</h1>
 
+  <ul class="filter">
+    <li class="filter1"><a class="active list" onclick="filterItem('<%= JSON.stringify(foods) %>', 'all')">All</a></li>
+    <li class="filter1"><a class="list" onclick="filterItem('<%= JSON.stringify(foods) %>', 'starter')">Starter</a></li>
+    <li class="filter1"><a class="list" onclick="filterItem('<%= JSON.stringify(foods) %>', 'main')">Main Course</a></li>
+    <li class="filter1"><a class="list" onclick="filterItem('<%= JSON.stringify(foods) %>', 'drink')">Drinks</a></li>
+    <li class="filter1"><a class="list" onclick="filterItem('<%= JSON.stringify(foods) %>', 'sweet')">Sweets</a></li>
+  </ul>
+
+  <div class="searchDiv">
+    <button class="searchIcon"><i class="fa fa-search"></i></button>
+    <input type="text" id="myInput" onkeyup="myFunction(('<%= JSON.stringify(foods) %>'))" placeholder="Search for food, size, stock, category or amount.." title="Type in a name"> 
+  </div>
+
   <div
     class="
       grid grid-cols-1
@@ -50,7 +63,7 @@
     "
   >
     <% foods.forEach(function(food) { %>
-    <div class="w-full md:w-74 lg:w-64">
+      <div class="w-full showItems md:w-74 lg:w-64">
       <img class="h-40 mb-4 mx-auto" src="/img/<%= food.image %>" alt="" />
       <div class="text-center">
         <h2 class="mb-4 text-lg"><%= food.name %></h2>
@@ -94,3 +107,110 @@
     <% }) %>
   </div>
 </section>
+
+<section class="login flex justify-center pt-10">
+  <div class="w-full" style="width: 80%;">
+      <h1 class="text-xl font-bold mt-0 text-center mb-4" id="foodHere">Contact Us</h1>
+      <form action="/contact" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <% if(messages.error) { %>
+          <span class="text-red-500 text-sm"><%= messages.error %></span>
+        <% } %>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            Name
+          </label>
+          <input
+            name="name" required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter your name">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            Email
+          </label>
+          <input
+            name="email" required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Enter your email">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="subject">
+            Subject
+          </label>
+          <input
+            name="subject" required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="subject" type="text" placeholder="Enter subject">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
+              Any comments, questions or suggestions?
+          </label>
+          <textarea
+            name="message" placeholder="Enter your comments, questions or suggestions?">
+          </textarea>
+        </div>
+        <div style="text-align: center;">
+          <button 
+          class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" 
+          type="submit"
+          style="width: 80%;"
+          >
+              Send
+          </button>
+        </div>
+        
+      </form>
+      <p class="text-center text-gray-500 text-lg" style="margin-bottom: 20px;">
+        &copy;2021 <a href="https://sarthakshukla.netlify.app" target="_blank">Sarthak Shukla.</a> All rights reserved.
+      </p>
+    </div>
+</section>
+
+<section>
+  
+</section>
+
+
+<script>
+
+  function myFunction(foods) {
+    foods = JSON.parse(foods);
+    let val = document.getElementById('myInput').value;
+    let items = document.getElementsByClassName('showItems');
+
+    for(let i=0;i<items.length; i++) {
+      if(foods[i].name.toLowerCase().includes(val.toLowerCase()) || foods[i].stock.toLowerCase().startsWith(val.toLowerCase()) || foods[i].size.toLowerCase().includes(val.toLowerCase()) || foods[i].category.toLowerCase().startsWith(val.toLowerCase()) || foods[i].price <= val) {
+        items[i].classList.remove('hideItem');
+      } else {
+        items[i].classList.add('hideItem');
+      }
+    }
+
+  }
+
+  function filterItem(foods, val) {
+    foods = JSON.parse(foods);
+    let list = document.getElementsByClassName('list');
+    let items = document.getElementsByClassName('showItems');
+    if(val !== 'all')  {
+      for(let i=0;i<items.length; i++) {
+        if(foods[i].category.toLowerCase().includes(val.toLowerCase())) {
+          items[i].classList.remove('hideItem');
+        } else {
+          items[i].classList.add('hideItem');
+        }
+      }
+    } else {
+      for(let i=0;i<items.length; i++) {
+        items[i].classList.remove('hideItem');
+      }
+    }
+
+    for(let i=0; i<list.length; i++) {
+      // console.log(list[i].innerText);
+      if(list[i].innerText.toLowerCase().includes(val.toLowerCase())) {
+        list[i].classList.add('active');
+      } else {
+        list[i].classList.remove('active');
+      }
+    }
+  }
+</script>

@@ -275,6 +275,31 @@ function authController() {
                 return res.redirect('/register');
             }
 
+            if(password.length < 6) {
+                req.flash('error', 'Password should be of atleast 6 characters');
+                req.flash('name', name);
+                req.flash('email', email);
+                req.flash('phone', phone);
+                return res.redirect('/register');
+            }
+
+            let uc=0, lc=0, sc=0, d=0;
+            for(let i=0; i<password.length; i++) {
+                let ch=password.charAt(i);
+                let as = ch;
+                if(as >=65 && as<=90) uc++;
+                else if(as>=97 && as<=122) lc++;
+                else if(as >=48 && as<=57) d++;
+                else sc++;
+            }
+            if(uc<1 || lc<1 || sc<1 || d<1) {
+                req.flash('error', 'Password should contain atleast One uppercase, one lowercase, one digit and one special character');
+                req.flash('name', name);
+                req.flash('email', email);
+                req.flash('phone', phone);
+                return res.redirect('/register');
+            }
+
             const hashedPassword = await bcrypt.hash(password, 10);           //   Hash password
             const otp = Math.floor(Math.random() * 1000000) + 10000;
 

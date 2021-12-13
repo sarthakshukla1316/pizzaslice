@@ -12,7 +12,8 @@ export function placeOrder(formObject) {
         }).show();
 
         setTimeout(() => {
-            window.location.href = '/customer/orders';
+            // window.location.href = '/customer/orders';
+            window.location.href = `/customer/feedback/${res.data.order_id}`;
         }, 1000);
 
     }).catch((err) => {

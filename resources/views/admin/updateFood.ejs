@@ -1,4 +1,4 @@
-<section class="login flex justify-center pt-24">
+<section class="login flex justify-center pt-10">
     <div class="w-full max-w-lg">
         <form action="/admin/update-food" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <% if(messages.error) { %>
@@ -9,7 +9,7 @@
               Name
             </label>
             <input
-              name="name" value="<%= name %>"
+              name="name" value="<%= name %>" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter food name">
           </div>
             <div class="mb-4">
@@ -17,7 +17,7 @@
                 New Name
               </label>
               <input
-                name="newName" value="<%= name %>" 
+                name="newName" value="<%= name %>" required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="newName" type="text" placeholder="Enter new food name">
             </div>
           <div class="mb-4">
@@ -25,7 +25,7 @@
               Price
             </label>
             <input
-              name="price" value="<%= price %>"
+              name="price" value="<%= price %>" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" type="text" placeholder="Enter food price">
           </div>
           <div class="mb-4">
@@ -33,7 +33,7 @@
               Size
             </label>
             <input
-              name="size" value="<%= size %>"
+              name="size" value="<%= size %>" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="size" type="text" placeholder="Enter food size">
           </div>
           <div class="mb-4">
@@ -41,8 +41,16 @@
               Stock
             </label>
             <input
-              name="stock" value="<%= stock %>"
+              name="stock" value="<%= stock %>" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stock" type="text" placeholder="Enter food stock">
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+              Category
+            </label>
+            <input
+              name="category" value="<%= category %>" required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="category" type="text" placeholder="Enter food category">
           </div>
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="image">

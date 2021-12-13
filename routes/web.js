@@ -18,6 +18,7 @@ const multer = require('multer');
 const forgotController = require("../app/http/controllers/forgotController.js");
 const userController = require("../app/http/controllers/admin/userController.js");
 const profileController = require("../app/http/controllers/customers/profileController.js");
+const feedbackController = require("../app/http/controllers/customers/feedbackController.js");
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'public/img/'),
@@ -32,9 +33,12 @@ let upload = multer({
     storage: storage, 
     limit: { fileSize: 100000 * 100}
 }).single("image");
+
 function initRoutes(app) {
 
     app.get('/', homeController().index);
+    // app.get('/val', homeController().val);
+    // app.post('/val', homeController().filtered);
     
     
     app.get('/login', guest, authController().login);
@@ -82,6 +86,11 @@ function initRoutes(app) {
 
     app.get('/customer/orders/:id', auth, orderController().show);
 
+    app.get('/customer/feedback/:order_id', auth, feedbackController().showFeedback);
+    app.post('/customer/feedback', auth, feedbackController().saveFeedback);
+
+    app.post('/contact', feedbackController().contact);
+
 
     app.get('/admin/orders', admin, adminOrderController().index);           //    Admin routes
     app.post('/admin/order/status', admin, statusController().update);
@@ -91,6 +100,7 @@ function initRoutes(app) {
 
     app.get('/admin/menuItems', admin, foodController().index);
     app.get('/admin/users', admin, userController().index);
+    app.get('/admin/feedback', admin, userController().getFeedback);
 
     app.get('/admin/add-food', admin, foodController().addFood);
     app.post('/admin/add-food', admin, upload, foodController().postAddFood);
@@ -103,6 +113,7 @@ function initRoutes(app) {
     
     app.get('/admin/delete-order', admin, foodController().deleteOrder);
     app.post('/admin/delete-order', admin, foodController().postDeleteOrder);
+
     
 }
 

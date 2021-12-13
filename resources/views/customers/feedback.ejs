@@ -1,0 +1,143 @@
+<section class="login flex justify-center pt-4">
+    <div class="w-full max-w-lg">
+        <h1 class="text-xl font-bold mt-4 text-center mb-4" id="foodHere">Give your feedback <span style="color: rgb(73, 206, 80);">&#128522;</span><span style="color: rgb(73, 206, 80);">&#128523;</span></h1>
+        <form action="/customer/feedback" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <% if(messages.error) { %>
+            <span class="text-red-500 text-sm"><%= messages.error %></span>
+          <% } %>
+          <% if(messages.success) { %>
+            <p style="color: #59b256;"><%= messages.success %></p>
+          <% } %>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="order_id">
+              Order Id
+            </label>
+            <input
+              name="order_id" 
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="order_id" value='<%= order_id %>' type="text" placeholder="Enter your Order Id">
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+                Food quality
+              </label>
+              <div class="horizon">
+                <label class="container1">Dissatisfied
+                    <input type="radio" value="Dissatisfied" name="quality">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Average
+                    <input type="radio" value="Average" name="quality">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Good
+                    <input type="radio" value="Good" name="quality">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Excellent
+                    <input type="radio" value="Excellent" checked="checked" name="quality">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+                Cleanliness
+              </label>
+              <div class="horizon">
+                <label class="container1">Dissatisfied
+                    <input type="radio" value="Dissatisfied" name="clean">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Average
+                    <input type="radio" value="Average" name="clean">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Good
+                    <input type="radio" value="Good" name="clean">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Excellent
+                    <input type="radio" value="Excellent" checked="checked" name="clean">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+                Speed of Service
+              </label>
+              <div class="horizon">
+                <label class="container1">Dissatisfied
+                    <input type="radio" value="Dissatisfied" name="speed">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Average
+                    <input type="radio" value="Average" name="speed">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Good
+                    <input type="radio" value="Good" name="speed">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Excellent
+                    <input type="radio" value="Excellent" checked="checked" name="speed">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+                Overall Experience
+              </label>
+            <div class="horizon">
+                <label class="container1">Dissatisfied
+                    <input type="radio" value="Dissatisfied" name="overall">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Average
+                    <input type="radio" value="Average" name="overall">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Good
+                    <input type="radio" value="Good" name="overall">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1">Excellent
+                    <input type="radio" value="Excellent" checked="checked" name="overall">
+                    <span class="checkmark"></span>
+                  </label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
+                Any comments, questions or suggestions?
+            </label>
+            <textarea
+              name="comment" value='<%= messages.comment && messages.comment %>' placeholder="Enter your comments, questions or suggestions?">
+            </textarea>
+          </div>
+          <div class="flex items-center justify-between">
+            <button 
+              class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" 
+              type="submit"
+            >
+              Submit
+            </button>
+            <button 
+              class="btn-primary rounded text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" 
+              href="/customer/orders"
+              style="background: rgb(224, 98, 98);"
+            >
+              May be later
+            </button>
+            
+          </div>
+          
+        </form>
+        <p class="text-center text-gray-500 text-md" style="margin-bottom: 20px;">
+          &copy;2021 <a href="https://sarthakshukla.netlify.app" target="_blank">Sarthak Shukla</a>. All rights reserved.
+        </p>
+      </div>
+</section>

@@ -73,6 +73,29 @@ function forgotController() {
                 return res.redirect('/setPassword');
             }
 
+            if(newPassword.length < 6) {
+                req.flash('error', 'Password should be of atleast 6 characters');
+                req.flash('email', email);
+                req.flash('otp', otp);
+                return res.redirect('/setPassword');
+            }
+
+            let uc=0, lc=0, sc=0, d=0;
+            for(let i=0; i<newPassword.length; i++) {
+                let ch=newPassword.charAt(i);
+                let as = ch;
+                if(as >=65 && as<=90) uc++;
+                else if(as>=97 && as<=122) lc++;
+                else if(as >=48 && as<=57) d++;
+                else sc++;
+            }
+            if(uc<1 || lc<1 || sc<1 || d<1) {
+                req.flash('error', 'Password should contain atleast One uppercase, one lowercase, one digit and one special character');
+                req.flash('email', email);
+                req.flash('otp', otp);
+                return res.redirect('/setPassword');
+            }
+
             const hashedPassword = await bcrypt.hash(newPassword, 10); 
 
             await User.updateOne({email: email}, { password: hashedPassword}).then((user) => {

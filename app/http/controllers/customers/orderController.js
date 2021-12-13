@@ -81,7 +81,7 @@ function orderController() {
         async store(req, res) {
             // console.log(req.body);
 
-            const { order_id, phone, address, otp, stripeToken, paymentType } = req.body;            //  Validating request
+            const { order_id, phone, address, otp, sendEmail, stripeToken, paymentType } = req.body;            //  Validating request
             if(!order_id || !phone || !address || !otp) {
                 // req.flash('error', 'All fields are required');
                 // return res.redirect('/cart');
@@ -102,7 +102,9 @@ function orderController() {
 
             
             await Order.findByIdAndUpdate(order_id, {items: req.session.cart.items, address: address, price: req.session.cart.totalPrice < 400 ? req.session.cart.totalPrice + 20 : req.session.cart.totalPrice, isVerified: true}).then(result => {
-                let markupCustomer = `
+
+                if(sendEmail === 'yes') {
+                    let markupCustomer = `
                     <div style="height: 50px; width: 100%; background: #59b256">
                         <h1 style="color: #fff; text-align: center; padding-top: 15px;">Order Summary</h1>
                     </div>
@@ -111,23 +113,27 @@ function orderController() {
                     <p>Expected Delivery Time within 40 minutes</p>
                     <p>Payment method : ${paymentType === 'cod' ? 'Cash on Delivery' : 'Card'}</p>
                     <p>Price : Rs ${req.session.cart.totalPrice < 400 ? req.session.cart.totalPrice + 20 : req.session.cart.totalPrice}</p>
-                `;
-                const subjectCustomer = 'Pizza Slice - Order placed';
-                const toEmailCustomer = req.user.email;
-                mailSender(toEmailCustomer, markupCustomer, subjectCustomer);
+                    `;
+                    const subjectCustomer = 'Pizza Slice - Order placed';
+                    const toEmailCustomer = req.user.email;
+                    mailSender(toEmailCustomer, markupCustomer, subjectCustomer);
 
-                let markupAdmin = `
-                    <div style="height: 50px; width: 100%; background: #59b256">
-                        <h1 style="color: #fff; text-align: center; padding-top: 15px;">New Order</h1>
-                    </div>
-                    <img src="https://thumbs.dreamstime.com/b/mobile-shopping-app-modern-online-technology-internet-customer-service-icon-order-placed-processing-processed-metaphors-vector-184200609.jpg" alt="">
-                    <h1>Congrats !! <br />New Order has been placed successfully</h1>
-                    <p>Payment method : ${paymentType === 'cod' ? 'Cash on Delivery' : 'Card'}</p>
-                    <p>Price : Rs ${req.session.cart.totalPrice < 400 ? req.session.cart.totalPrice + 20 : req.session.cart.totalPrice}</p>
-                `;
-                const subjectAdmin = `New Order placed by ${req.user.name}`;
-                const toEmailAdmin = 'sarthakshukla1317@gmail.com';
-                mailSender(toEmailAdmin, markupAdmin, subjectAdmin);
+                    let markupAdmin = `
+                        <div style="height: 50px; width: 100%; background: #59b256">
+                            <h1 style="color: #fff; text-align: center; padding-top: 15px;">New Order</h1>
+                        </div>
+                        <img src="https://thumbs.dreamstime.com/b/mobile-shopping-app-modern-online-technology-internet-customer-service-icon-order-placed-processing-processed-metaphors-vector-184200609.jpg" alt="">
+                        <h1>Congrats !! <br />New Order has been placed successfully</h1>
+                        <p>Payment method : ${paymentType === 'cod' ? 'Cash on Delivery' : 'Card'}</p>
+                        <p>Price : Rs ${req.session.cart.totalPrice < 400 ? req.session.cart.totalPrice + 20 : req.session.cart.totalPrice}</p>
+                    `;
+                    const subjectAdmin = `New Order placed by ${req.user.name}`;
+                    const toEmailAdmin = 'sarthakshukla1317@gmail.com';
+                    mailSender(toEmailAdmin, markupAdmin, subjectAdmin);
+                }
+
+                console.log(sendEmail);
+                
                 
                 Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {
                     // req.flash('success', 'Order placed successfully');
@@ -149,17 +155,17 @@ function orderController() {
                                 const eventEmitter = req.app.get('eventEmitter');
                                 eventEmitter.emit('orderPlaced', ord);
                                 delete req.session.cart;
-                                return res.json({ message: 'Payment Successful, Order placed successfully' });
+                                return res.json({ message: 'Payment Successful, Order placed successfully', order_id: placedOrder._id });
                             }).catch(err => {
                                 console.log(err);
                             })
                         }).catch(err => {
                             delete req.session.cart;
-                            return res.json({ message: 'Order placed successfully but Payment failed, You can pay at delivery time' });
+                            return res.json({ message: 'Order placed successfully but Payment failed, You can pay at delivery time', order_id: placedOrder._id });
                         })
                     } else {
                         delete req.session.cart;
-                        return res.json({ message: 'Order placed successfully' });
+                        return res.json({ message: 'Order placed successfully', order_id: placedOrder._id });
                     }
                     
                     

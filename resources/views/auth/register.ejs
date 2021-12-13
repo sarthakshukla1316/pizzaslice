@@ -9,7 +9,7 @@
                   Name
                 </label>
                 <input 
-                  name="name"
+                  name="name" required
                   value='<%= messages.name && messages.name %>'
                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter your name">
             </div>  
@@ -18,7 +18,7 @@
               Email
             </label>
             <input 
-              name="email"
+              name="email" required
               value='<%= messages.email && messages.email %>'
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email">
           </div>
@@ -27,7 +27,7 @@
               Phone number
             </label>
             <input 
-              name="phone"
+              name="phone" required
               value='<%= messages.phone && messages.phone %>'
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="text" placeholder="Enter your phone number">
           </div>
@@ -37,7 +37,7 @@
             </label>
             <div class="flex relative">
               <input 
-              name="password"
+              name="password" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
               <i class="fas fa-eye" id="togglePassword"></i>
             </div>
@@ -48,7 +48,7 @@
             </label>
             <div class="flex relative">
               <input 
-              name="confirmPassword"
+              name="confirmPassword" required
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="confirmPassword" type="password" placeholder="******************">
               <i class="fas fa-eye" id="togglePassword1"></i>
             </div>
@@ -64,8 +64,8 @@
             </a>
           </div>
         </form>
-        <p class="text-center text-gray-500 text-xs">
-          &copy;2021 Sarthak Shukla. All rights reserved.
+        <p class="text-center text-gray-500 text-md" style="margin-bottom: 20px;">
+          &copy;2021 <a href="https://sarthakshukla.netlify.app" target="_blank">Sarthak Shukla</a>. All rights reserved.
         </p>
       </div>
 </section>
