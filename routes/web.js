@@ -107,6 +107,9 @@ function initRoutes(app) {
     app.get('/admin/update-food', admin, foodController().updateFood);
     app.post('/admin/update-food', admin, upload, foodController().postUpdateFood);
 
+    app.get('/admin/response/:email', admin, userController().sendEmail);
+    app.post('/admin/send-email', admin, userController().postSendEmail);
+
     app.post('/admin/delete-food/:name', admin, foodController().postDelete);
     
     app.post('/admin/delete-order/:order_id', admin, foodController().postDeleteOrder);
@@ -114,7 +117,6 @@ function initRoutes(app) {
     app.post('/admin/delete-feedback/:order_id', admin, userController().deleteFeedback);
     app.post('/admin/delete-user/:email', admin, userController().deleteUser);
 
-    
 }
 
 

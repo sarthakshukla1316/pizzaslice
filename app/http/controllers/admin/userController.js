@@ -26,6 +26,31 @@ function userController() {
             let feedback = await Feedback.findOne({ order_id: req.params.order_id });
             await feedback.delete();
             return res.redirect('/admin/feedback');
+        },
+
+        sendEmail(req, res) {
+            res.render('admin/sendEmail', { email: req.params.email});
+        },
+
+        async postSendEmail(req, res) {
+            const { email, comment } = req.body;
+            if(!email || !comment) {
+                req.flash('error', 'Please fill all details');
+                req.flash('email', email);
+                req.flash('comment', comment);
+            }
+
+            let markupCustomer = `
+                    <div style="height: 50px; width: 100%; background: #59b256">
+                        <h1 style="color: #fff; text-align: center; padding-top: 15px;">Response message</h1>
+                    </div>
+                    <p>${comment}</p>
+            `;
+            const subjectCustomer = 'Pizza Slice Team';
+            const toEmailCustomer = email;
+            mailSender(toEmailCustomer, markupCustomer, subjectCustomer);
+
+            return res.redirect('/admin/users');
         }
     }
 }

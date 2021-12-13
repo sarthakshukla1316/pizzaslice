@@ -11,6 +11,11 @@
     </a>
 </div>
 
+<div class="searchDiv">
+    <button class="searchIcon"><i class="fa fa-search"></i></button>
+    <input type="text" id="myInput" onkeyup="myFunction(('<%= JSON.stringify(foods) %>'))" placeholder="Search for name, price, size, stock, or category.." title="Type in a name"> 
+</div>
+
 <table class="w-full table-auto bg-white">
     <thead>
         <tr>
@@ -27,7 +32,7 @@
 
     <tbody>
             <% foods.forEach(function(food) { %>
-                <tr>
+                <tr class="showItems">
                     <td class="border px-4 py-2">
                         <a href="#" class="text-green-600"><%= food._id %></a>
                     </td>
@@ -60,7 +65,25 @@
                             <button type="submit" class="deleteBtn px-4 py-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
                     </td>
+                    
                 </tr>
             <% }) %>
     </tbody>
 </table>
+
+<script>
+    function myFunction(foods) {
+        foods = JSON.parse(foods);
+        let val = document.getElementById('myInput').value;
+        let items = document.getElementsByClassName('showItems');
+
+        for(let i=0;i<items.length; i++) {
+        if(foods[i].name.toLowerCase().includes(val.toLowerCase()) || foods[i].stock.toLowerCase().startsWith(val.toLowerCase()) || foods[i].size.toLowerCase().includes(val.toLowerCase()) || foods[i].category.toLowerCase().startsWith(val.toLowerCase()) || foods[i].price <= val) {
+            items[i].classList.remove('hideItem');
+        } else {
+            items[i].classList.add('hideItem');
+        }
+        }
+
+    }
+</script>

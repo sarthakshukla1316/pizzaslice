@@ -2,6 +2,11 @@
     <h1 class="text-xl font-bold mt-8 text-center mb-8" id="foodHere">Customer feedbacks</h1>
 </div>
 
+<div class="searchDiv">
+    <button class="searchIcon"><i class="fa fa-search"></i></button>
+    <input type="text" id="myInput" onkeyup="myFunction(('<%= JSON.stringify(feedbacks) %>'))" placeholder="Search for email or phone.." title="Type in a name"> 
+</div>
+
 <table class="w-full table-auto bg-white">
     <thead>
         <tr>
@@ -19,7 +24,7 @@
 
     <tbody>
             <% feedbacks.forEach(function(feedback) { %>
-                <tr>
+                <tr class="showItems">
                     <td class="border px-4 py-2">
                         <%= feedback.order_id %>
                     </td>
@@ -58,7 +63,20 @@
 </table>
 
 <script>
-    function deleteFeedback() {
-        
+
+    function myFunction(feedbacks) {
+        feedbacks = JSON.parse(feedbacks);
+      let val = document.getElementById('myInput').value;
+      let items = document.getElementsByClassName('showItems');
+  
+      for(let i=0;i<items.length; i++) {
+        if(feedbacks[i].email.toLowerCase().includes(val.toLowerCase()) || feedbacks[i].phone.startsWith(val)) {
+          items[i].classList.remove('hideItem');
+        } else {
+          items[i].classList.add('hideItem');
+        }
+      }
+  
     }
+  
 </script>

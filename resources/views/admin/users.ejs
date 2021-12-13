@@ -2,6 +2,11 @@
     <h1 class="text-xl font-bold mt-8 text-center mb-8" id="foodHere">All Users</h1>
 </div>
 
+<div class="searchDiv">
+    <button class="searchIcon"><i class="fa fa-search"></i></button>
+    <input type="text" id="myInput" onkeyup="myFunction(('<%= JSON.stringify(users) %>'))" placeholder="Search for name, email, or phone.." title="Type in a name"> 
+</div>
+
 <table class="w-full table-auto bg-white">
     <thead>
         <tr>
@@ -14,12 +19,13 @@
             <th class="px-4 py-2 text-left">ForgotOtp</th>
             <th class="px-4 py-2 text-left">role</th>
             <th class="px-4 py-2 text-left">Delete</th>
+            <th class="px-4 py-2 text-left">Email</th>
         </tr>
     </thead>
 
     <tbody>
             <% users.forEach(function(user) { %>
-                <tr>
+                <tr class="showItems">
                     <td class="border px-4 py-2">
                         <a href="#" class="text-green-600"><%= user._id %></a>
                     </td>
@@ -57,7 +63,31 @@
                             <button type="submit" class="deleteBtn px-4 py-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
                     </td>
+
+                    <td class="border px-4 py-2">
+                        <a href="/admin/response/<%= user.email %>" class="editBtn px-4 py-2"><i class="fas fa-paper-plane"></i></a>
+                    </td>
                 </tr>
             <% }) %>
     </tbody>
 </table>
+
+
+<script>
+
+    function myFunction(users) {
+      users = JSON.parse(users);
+      let val = document.getElementById('myInput').value;
+      let items = document.getElementsByClassName('showItems');
+  
+      for(let i=0;i<items.length; i++) {
+        if(users[i].name.toLowerCase().includes(val.toLowerCase()) || users[i].email.toLowerCase().includes(val.toLowerCase()) || users[i].phone.startsWith(val)) {
+          items[i].classList.remove('hideItem');
+        } else {
+          items[i].classList.add('hideItem');
+        }
+      }
+  
+    }
+  
+</script>

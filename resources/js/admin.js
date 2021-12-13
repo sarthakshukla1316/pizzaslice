@@ -87,6 +87,9 @@ export function initAdmin(socket) {
                         <button type="submit" class="px-4 py-2" style="color: rgb(170, 19, 19); outline: none;">Delete</button>
                     </form>
                 </td>
+                <td class="border px-4 py-2">
+                    <a href="/admin/response/${order.customerId.email}" class="editBtn px-4 py-2"><i class="fas fa-paper-plane"></i></a>
+                </td>
             </tr>
         `
         }).join('')
