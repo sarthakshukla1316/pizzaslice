@@ -3,8 +3,15 @@ const Order = require('../../../models/order')
 const User = require('../../../models/user')
 const moment = require('moment');
 const mailSender = require('./mailSender');
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
-let springedge = require('springedge');
+// const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+// let springedge = require('springedge');
+
+const SMS_SID = process.env.SMS_SID;
+const SMS_AUTH_TOKEN = process.env.SMS_AUTH_TOKEN;
+
+const twilio = require('twilio')(SMS_SID, SMS_AUTH_TOKEN, {
+    lazyLoading: true
+});
 
 
 function orderController() {
@@ -42,23 +49,33 @@ function orderController() {
                 otp: otp
             })
             
-            let params = {
-            'sender': process.env.SPRINGEDGE_SENDER,
-            'apikey': process.env.SPRINGEDGE_SECRET_KEY,
-            'to': [
-                `91${phone}`  //Mobile Numbers 
-            ],
-            // 'message': `Hello ${user.name} , your verification code is ${otp}`,Hello, This is a test message from spring edge
-            'message': `Hello ${otp} , This is a test message from spring edge`,
-            'format': 'json'
-            };
+            // let params = {
+            // 'sender': process.env.SPRINGEDGE_SENDER,
+            // 'apikey': process.env.SPRINGEDGE_SECRET_KEY,
+            // 'to': [
+            //     `91${phone}`  //Mobile Numbers 
+            // ],
+            // // 'message': `Hello ${user.name} , your verification code is ${otp}`,Hello, This is a test message from spring edge
+            // 'message': `Hello ${otp} , This is a test message from spring edge`,
+            // 'format': 'json'
+            // };
             
-            springedge.messages.send(params, 5000, function (err, response) {
-            if (err) {
-                return console.log(err);
+            // springedge.messages.send(params, 5000, function (err, response) {
+            // if (err) {
+            //     return console.log(err);
+            // }
+            // console.log(response);
+            // });
+            const code = '+91';
+            try {
+                await twilio.messages.create({
+                    to: `${code}${phone}`,
+                    from: process.env.SMS_FROM_NUMBER,
+                    body: `Your Pizzaaslice otp is ${otp}`,
+                })
+            } catch(err) {
+                console.log(err.message);
             }
-            console.log(response);
-            });
             
             
             await order.save().then((order) => {

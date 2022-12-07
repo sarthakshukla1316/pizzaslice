@@ -15,7 +15,7 @@ function feedbackController() {
                 req.flash('error', 'Please fill all details');
                 req.flash('order_id', order_id);
                 req.flash('comment', comment);
-                return res.redirect('/customer/feedback');
+                return res.redirect(`/customer/feedback/${order_id}`);
             }
 
             Feedback.exists({ order_id: order_id }, async (err, result) => {         //   Check order feedback exists or not in DB
@@ -23,7 +23,7 @@ function feedbackController() {
                     req.flash('error', 'Feedback already exists');
                     req.flash('order_id', order_id);
                     req.flash('comment', comment);
-                    return res.redirect('/customer/feedback');
+                    return res.redirect('/customer/orders');
                 }
             })
             
@@ -47,7 +47,7 @@ function feedbackController() {
                 req.flash('error', 'Something went wrong');
                 req.flash('order_id', order_id);
                 req.flash('comment', comment);
-                return res.redirect('/customer/feedback');
+                return res.redirect(`/customer/feedback/${order_id}`);
             })
         },
 
